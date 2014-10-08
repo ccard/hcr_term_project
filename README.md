@@ -1,6 +1,6 @@
 HCR Term Project
 ================
-__Authors__: Chris Card, Marshall s
+__Authors__: Chris Card, Marshall Sweatt
 
 # Introduction #
 
