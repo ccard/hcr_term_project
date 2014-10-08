@@ -1,4 +1,11 @@
-hcr_term_project
+HCR Term Project
 ================
+__Authors__: Chris Card, Marshall s
 
-HCR (csci 598) term project
+# Introduction #
+
+# Environment #
+
+# Compilation #
+
+# Execution #
