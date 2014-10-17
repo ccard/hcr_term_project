@@ -45,3 +45,8 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+#latex
+docs/*.aux
+docs/*.log
+docs/*.*.gz
