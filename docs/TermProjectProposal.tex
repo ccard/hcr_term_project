@@ -1,0 +1,62 @@
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{subfigure}
+\usepackage{amsmath}
+%\usepackage{researchBib}
+\pagestyle{plain}
+
+
+%opening
+\title{Term Project Proposal}
+\author{Chris Card \& Marshall Sweatt\\
+CSCI 598A: Human Centered Robotics\\
+Dr. Hao Zhang\\
+Department of Electrical Engineering and Computer Science\\
+Colorado School of Mines}
+
+\begin{document}
+\maketitle
+\newpage
+\section{Proposal}
+This paper will be a survey of three existing simultaneous localization and mapping (SLAM) approaches implemented in the Robotic Operating System (ROS) through a Kinect sensor on a Turtlebot.    The Kinect sensor provides 3D point cloud matrices for both distance and RGB.  We intend to implement Hector SLAM, gmapping SLAM, and RGBD SLAM.  These approaches are distinct from one another as Hector SLAM uses only 3D distance information to determine localization and mapping, while G-mapping SLAM uses only 3D RGB information.  RGBD SLAM makes use of both 3D distance information and 3D RGB information.  
+We intend to use existing ROS packages to implement these three approaches.  We will then compare the results of each approach using the following metrics:
+\begin{enumerate}
+\item Localization accuracy vs ground truth locations
+\item Mapping quality - closing the loop\\
+Find ourselves w/n a map\\
+Does the map accurately reflect the environment?
+\end{enumerate}
+The exploration of the various SLAM techniques will aid in the general understanding of SLAM as well as determining the most reliable SLAM methods currently implemented.  
+This project will be implemented by the following students:
+\begin{enumerate}
+\item Chris Card
+\item Marshall Sweatt - Team leader
+\end{enumerate}
+
+\section{Timeline}
+Table~\ref{tab:timeline} presents the expected timeline for this project.
+\begin{table}[h!]
+\centering
+\caption{Timeline of Work}
+\begin{tabular}{|c|c|}
+\hline
+Activity & Date\\
+\hline
+Proposal & 10/17/14\\
+Robot Control & 10/24/14\\
+SLAM approach 1(Hector) & 11/04/14\\
+SLAM approach 2(RGBD SLAM) & 11/10/14\\
+SLAM approach 3(gslamming) & 11/14/14\\
+Report & 11/21/14\\
+\hline
+\end{tabular}
+\label{tab:timeline}
+\end{table}
+\section{Workload Breakdown}
+We intend to pair program most of this project.  The major parts of this project include: Robot Control, SLAM approaches, and SLAM testing.  The expected workload percentages will be 50/50\footnote{This will be updated as the project progresses}.
+\end{document}
