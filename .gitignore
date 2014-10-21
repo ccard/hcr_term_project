@@ -50,3 +50,6 @@ CATKIN_IGNORE
 docs/*.aux
 docs/*.log
 docs/*.*.gz
+
+#setup files
+*setup.bash
