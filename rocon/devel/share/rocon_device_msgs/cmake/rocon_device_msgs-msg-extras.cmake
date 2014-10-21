@@ -1,2 +1,0 @@
-set(rocon_device_msgs_MESSAGE_FILES "/home/chris/Documents/mines/mines_grad/csci598/hcr_term_project/rocon/src/rocon_msgs/rocon_device_msgs/msg/Hue.msg;/home/chris/Documents/mines/mines_grad/csci598/hcr_term_project/rocon/src/rocon_msgs/rocon_device_msgs/msg/HueState.msg;/home/chris/Documents/mines/mines_grad/csci598/hcr_term_project/rocon/src/rocon_msgs/rocon_device_msgs/msg/HueArray.msg;/home/chris/Documents/mines/mines_grad/csci598/hcr_term_project/rocon/src/rocon_msgs/rocon_device_msgs/msg/SetColor.msg")
-set(rocon_device_msgs_SERVICE_FILES "")

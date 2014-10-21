@@ -1,0 +1,2 @@
+set(map_store_MESSAGE_FILES "/home/marshall/hcr_term_project/turtlebot/src/map_store/msg/MapListEntry.msg")
+set(map_store_SERVICE_FILES "/home/marshall/hcr_term_project/turtlebot/src/map_store/srv/DeleteMap.srv;/home/marshall/hcr_term_project/turtlebot/src/map_store/srv/ListMaps.srv;/home/marshall/hcr_term_project/turtlebot/src/map_store/srv/PublishMap.srv;/home/marshall/hcr_term_project/turtlebot/src/map_store/srv/RenameMap.srv;/home/marshall/hcr_term_project/turtlebot/src/map_store/srv/SaveMap.srv")
