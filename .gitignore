@@ -53,5 +53,5 @@ docs/*.*.gz
 
 #setup files
 *setup.bash
-*build/*
-*devel/*
+*/build/*
+*/devel/*
