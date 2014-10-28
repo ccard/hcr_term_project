@@ -1,8 +1,10 @@
 #! /bin/bash
 
-cd rocon/; catkin_make; cd ..
-source /rocon/devel/setup.bash
-cd kobuki/; catkin_make; cd ..
-source /kobuki/devel/setup.bash
-cd turtlebot/; catkin_make; cd ..
-source /turtlebot/devel/setup.bash
+echo "See .env.log for any potential errors"
+
+`cd rocon/; catkin_make; cd ..` >> .env.log
+`source ./rocon/devel/setup.bash` >> .env.log
+`cd kobuki/; catkin_make; cd ..` >> .env.log
+`source ./kobuki/devel/setup.bash` >> .env.log
+`cd turtlebot/; catkin_make; cd ..` >> .env.log
+`source ./turtlebot/devel/setup.bash` >> .env.log
