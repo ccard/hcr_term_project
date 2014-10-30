@@ -1,0 +1,4 @@
+publishers: []
+subscribers:
+  - chatter
+services: []

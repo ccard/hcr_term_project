@@ -1,0 +1,26 @@
+display:          Random Walker
+description:      Makes Kobuki wander off and explorer the world
+compatibility:    rocon:/kobuki|turtlebot2
+# could point this at kobuki_apps/random_walker.launch for a resource test
+launch:           random_walker.launch
+public_interface: random_walker.interface
+icon:             random_walker.png
+required_capabilities:
+  - name: std_capabilities/DifferentialMobileBase
+    interface:
+      topics:
+        requires:
+          '/cmd_vel': 'kobuki_random_walker_controller/commands/velocity'
+        provides: []
+  - name: kobuki_capabilities/KobukiLED1
+    interface:
+      topics:
+        requires:
+          '/kobuki_led1': 'kobuki_random_walker_controller/commands/led1'
+        provides: []
+  - name: kobuki_capabilities/KobukiLED2
+    interface:
+      topics:
+        requires:
+          '/kobuki_led2': 'kobuki_random_walker_controller/commands/led2'
+        provides: []

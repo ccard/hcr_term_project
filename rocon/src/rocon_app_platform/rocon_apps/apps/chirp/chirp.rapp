@@ -1,0 +1,4 @@
+display: Chirp
+description: Make an audible "chirp" sound.
+public_interface: chirp.interface
+icon: ../../icons/cow.png

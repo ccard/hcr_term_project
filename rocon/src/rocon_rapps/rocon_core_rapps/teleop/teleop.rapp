@@ -1,0 +1,4 @@
+display: Teleop
+description: Robot teleoperation. 
+public_interface: teleop.interface
+icon: ../icons/joystick.png

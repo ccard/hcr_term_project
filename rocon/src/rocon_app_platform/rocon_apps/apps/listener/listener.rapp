@@ -1,0 +1,6 @@
+display: Listener
+description: Default ros style listener tutorial
+compatibility: rocon:/
+launch: listener.launch
+public_interface: listener.interface
+icon: ../../icons/conductor.png

@@ -1,0 +1,9 @@
+<!--
+  Simply launches a hub with a non-default hub name so we can 
+  test hubs in parallel. 
+-->
+<launch>
+  <include file="$(find rocon_hub)/launch/hub.launch">
+    <arg name="hub_name" value="Pirate Hub" />
+  </include>
+</launch>

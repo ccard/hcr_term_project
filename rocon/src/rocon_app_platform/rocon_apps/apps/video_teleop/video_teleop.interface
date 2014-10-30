@@ -1,0 +1,9 @@
+publishers:
+  - name: /teleop/compressed_image
+    type: sensor_msgs/CompressedImage
+subscribers:
+  - name: /teleop/cmd_vel
+    type: geometry_msgs/Twist
+services: []
+action_clients: []
+action_servers: []

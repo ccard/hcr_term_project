@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="concert_schedulers" name="scheduler" type="compatibility_tree_scheduler.py">
+    <param name="enable_preemptions" value="false"/>
+  </node>
+</launch>

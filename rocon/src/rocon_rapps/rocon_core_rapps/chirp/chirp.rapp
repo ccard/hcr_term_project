@@ -1,0 +1,6 @@
+display: Chirp
+description: Make an audible "chirp" sound.
+compatibility: rocon:/
+launch: chirp.launch
+public_interface: chirp.interface
+icon: ../icons/cow.png

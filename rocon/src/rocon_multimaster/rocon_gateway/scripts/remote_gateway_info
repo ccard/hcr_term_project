@@ -1,0 +1,161 @@
+#!/usr/bin/env python
+#
+# License: BSD
+#   https://raw.github.com/robotics-in-concert/rocon_multimaster/license/LICENSE
+#
+
+##############################################################################
+# Imports
+##############################################################################
+
+import argparse
+import os
+import sys
+import time
+import rospy
+import rocon_gateway
+import gateway_msgs.msg as gateway_msgs
+import gateway_msgs.srv as gateway_srvs
+import rocon_gateway_utils
+import rocon_console.console as console
+import rocon_python_comms
+
+##############################################################################
+# Functions
+##############################################################################
+
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Prettifies remote gateway info')
+    parser.add_argument('-l', '--loop', action='store_true',
+                        help='continuously loop and refresh the output (console mode only)[false].')
+    parser.add_argument('-p', '--loop-period', action='store', type=float,
+                        default=1.0,
+                        help='refresh rate if this command is looping  (console mode only)[1.0]')
+    args = parser.parse_args(args=rospy.myargv(argv=sys.argv)[1:])
+    if args.loop_period != 1.0:  # start looping if someone actually set this.
+        args.loop = True
+    return args
+
+
+def resolve_local_gateway():
+    try:
+        gateway_namespace = rocon_gateway_utils.resolve_local_gateway(timeout=rospy.rostime.Duration(5.0))
+    except rocon_python_comms.NotFoundException as e:
+        raise rocon_gateway.GatewayError("cannot proceed without a gateway, aborting [%s]" % str(e))
+    gateway_info = rocon_python_comms.SubscriberProxy(gateway_namespace + '/gateway_info', gateway_msgs.GatewayInfo)()
+    return gateway_namespace, gateway_info.ip
+
+
+def resolve_remote_gateways(gateway_namespace):
+    '''
+      @raise rocon_gateway.GatewayError: if no remote gateways or no matching gateways available.
+    '''
+    remote_gateway_info = rospy.ServiceProxy(gateway_namespace + '/remote_gateway_info', gateway_srvs.RemoteGatewayInfo)
+    req = gateway_srvs.RemoteGatewayInfoRequest()
+    req.gateways = []
+    try:
+        response = remote_gateway_info(req)
+    except rospy.service.ServiceException:  # if it's lost its connection
+        response = gateway_srvs.RemoteGatewayInfoResponse()
+        response.gateways = []
+    #print("Remote gateway info: %s" % resp)
+    return response.gateways
+
+
+def print_gateway_info(gateway_namespace, ip, remote_gateways):
+    console.pretty_print("Local Gateway\n", console.bold)
+    print("  Namespace: %s" % gateway_namespace)
+    print("  Ip/Hostname: %s" % ip)
+    # I wanted to put local ip here
+    for gateway in remote_gateways:
+        console.pretty_print("Remote Gateway\n", console.bold)
+        print("  Name        : %s" % rocon_gateway_utils.gateway_basename(gateway.name))
+        print("  Hash Name   : %s" % gateway.name)
+        print("  Ip/Hostname : %s" % gateway.ip)
+        print("  Firewall    : %s" % str(gateway.firewall).lower())
+        print("  Alive       : "),
+        if not gateway.conn_stats.gateway_available:
+            console.pretty_print(str(gateway.conn_stats.gateway_available), console.red)
+            print(" (last seen %i seconds ago)" % gateway.conn_stats.time_since_last_seen)
+        else:
+            console.pretty_print(str(gateway.conn_stats.gateway_available) + "\n", console.green)
+        if gateway.conn_stats.network_type == gateway_msgs.ConnectionStatistics.WIRED:
+            print("  Connection  : wired")
+        elif gateway.conn_stats.network_type == gateway_msgs.ConnectionStatistics.WIRELESS:
+            print("  Connection  : wireless")
+        else:
+            print("  Connection  : unknown")
+        print("  Latency from Hub(ms)")
+        print("    Min/Max        : %.3f-%.3f" % (gateway.conn_stats.ping_latency_min,
+                                                  gateway.conn_stats.ping_latency_max))
+        print("    Average        : %.3f" % gateway.conn_stats.ping_latency_avg)
+        print("    Mean Deviation : %.3f" % gateway.conn_stats.ping_latency_mdev)
+        if gateway.conn_stats.network_type == gateway_msgs.RemoteGateway.WIRELESS:
+            print("  Wireless statistics")
+            print("    Bitrate   : %sMb/s" % (gateway.conn_stats.wireless_bitrate / 1000000))
+            print("    Quality   : %s/70" % gateway.conn_stats.wireless_link_quality)
+            print("    Signal Lvl: %sdBm" % int(gateway.conn_stats.wireless_signal_level))
+        print("  Public Interface")
+        if len(gateway.public_interface) == 0:
+            print("          : -")
+        for rule in gateway.public_interface:
+            print("          : "),
+            console.pretty_print(rule.name, console.green)
+            print("-"),
+            console.pretty_print(rule.type, console.cyan)
+            print("-"),
+            console.pretty_print(rule.node + "\n", console.yellow)
+
+        print("  Flipped Interface")
+        if len(gateway.flipped_interface) == 0:
+            print("          : -")
+        for remote_rule in gateway.flipped_interface:
+            print("          : "),
+            console.pretty_print(remote_rule.gateway, console.red)
+            print("-"),
+            console.pretty_print(remote_rule.rule.name, console.green)
+            print("-"),
+            console.pretty_print(remote_rule.rule.type, console.cyan)
+            print("-"),
+            console.pretty_print(remote_rule.rule.node + "\n", console.yellow)
+
+        print("  Pulled Interface")
+        if len(gateway.pulled_interface) == 0:
+            print("          : -")
+        for remote_rule in gateway.pulled_interface:
+            print("          : "),
+            console.pretty_print(remote_rule.gateway, console.red)
+            print("-"),
+            console.pretty_print(remote_rule.rule.name, console.green)
+            print("-"),
+            console.pretty_print(remote_rule.rule.type, console.cyan)
+            print("-"),
+            console.pretty_print(remote_rule.rule.node + "\n", console.yellow)
+
+##############################################################################
+# Main
+##############################################################################
+
+if __name__ == '__main__':
+
+    rospy.init_node('remote_gateway_info')
+    args = parse_arguments()
+    gateway_namespace = None
+    remote_gateways = None
+    ip = None
+
+    try:
+        gateway_namespace, ip = resolve_local_gateway()
+        remote_gateways = resolve_remote_gateways(gateway_namespace)
+    except rocon_gateway.GatewayError, e:
+        console.error("Remote Gateway Info : %s" % str(e))
+        sys.exit(1)
+    if args.loop:
+        while not rospy.is_shutdown():
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print_gateway_info(gateway_namespace, ip, remote_gateways)
+            time.sleep(args.loop_period)
+            remote_gateways = resolve_remote_gateways(gateway_namespace)
+    else:
+        print_gateway_info(gateway_namespace, ip, remote_gateways)

@@ -1,0 +1,6 @@
+display: Turtle Teleop
+description: Take a turtlesim turtle for a teleop.
+compatibility: rocon:/pc
+launch: teleop.launch
+icon: teleop.png
+parent_name: rocon_core_rapps/teleop

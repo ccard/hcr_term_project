@@ -1,0 +1,10 @@
+<!-- 
+   An example for testing teleop directly (no interactions/pairing).
+-->
+<launch>
+  <node pkg="turtlesim" type="turtlesim_node" name="turtlesim" required="true"/>
+  <node pkg="turtle_concert" type="teleop.py" name="turtle_teleop" required="true">
+    <param name="simulation_namespace" value="/turtle1"/>
+  </node>
+</launch>
+

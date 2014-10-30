@@ -1,0 +1,7 @@
+display: Talker
+description: Default ros style talker tutorial
+compatibility: rocon:/
+launch: talker.launch
+public_interface: talker.interface
+public_parameters: talker.parameters
+icon: ../../icons/conductor.png

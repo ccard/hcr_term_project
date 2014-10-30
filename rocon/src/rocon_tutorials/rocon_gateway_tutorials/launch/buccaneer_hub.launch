@@ -1,0 +1,9 @@
+<!-- 
+  Launches the gateway hub (redis data store) without publishing
+  it via zeroconf (avahi/bonjour/jmdns).
+-->
+<launch>
+  <include file="$(find rocon_hub)/launch/hub.launch">
+    <arg name="hub_name" value="Buccaneer Hub" />
+  </include>
+</launch>
