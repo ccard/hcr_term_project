@@ -1,0 +1,12 @@
+<library path="src">
+  <class name="CapabilityGraph" type="rqt_capabilities.CapabilityGraph" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      A rqt plugin for visualizing and managing capabilities.
+    </description>
+    <qtgui>
+      <label>Capability Graph</label>
+      <icon type="theme">preferences-system-network</icon>
+      <statustip>A rqt plugin for visualizing and managing capabilities.</statustip>
+    </qtgui>
+  </class>
+</library>
