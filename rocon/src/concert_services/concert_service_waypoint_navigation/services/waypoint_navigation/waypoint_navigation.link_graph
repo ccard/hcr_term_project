@@ -1,0 +1,26 @@
+# Concert client tuples are of the platform-system-robot-name-app where
+# the name is just a placemarker for the eventual concert client name.
+# All other parts of the tuple are fixed.
+
+name: "Waypoint navigation"
+nodes:
+  - id: robot 
+    uri: rocon:/*#rocon_apps/waypoint_navigation
+    min: 1
+    max: 1
+topics:
+  - id: nav_control
+    type: yocs_msgs/NavigationControl
+  - id: nav_status
+    type: yocs_msgs/NavigationControlStatus
+actions: []
+
+edges: 
+  - start: nav_control
+    finish: robot 
+    remap_from: nav_ctrl
+    remap_to: /waypoint_navigation/nav_ctrl
+  - start: robot 
+    finish: nav_status
+    remap_from: nav_ctrl_status
+    remap_to: /waypoint_navigation/nav_ctrl_status

@@ -1,0 +1,4 @@
+name: Admin
+description: Administrative services and tools 
+author: Daniel Stonier
+interactions: concert_service_admin/admin

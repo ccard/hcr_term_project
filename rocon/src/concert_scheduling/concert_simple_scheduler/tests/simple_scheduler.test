@@ -1,0 +1,27 @@
+<!-- rostest launch file for Python simple scheduler test
+
+     This unit test uses rostest because it requires a ROS environment.  
+-->
+
+<launch>
+
+  <!-- start simple scheduler node -->
+  <node pkg="concert_simple_scheduler" type="simple_scheduler"
+        name="simple_scheduler" />
+
+  <!-- start mock conductor node -->
+  <node pkg="concert_simple_scheduler" type="mock_conductor.py"
+        name="mock_conductor">
+    <param
+        name="resources_url"
+        value="package://concert_simple_scheduler/tests/params/clients2.yaml"/>
+    <param name="delay" value="10.0" />
+  </node>
+
+  <!-- start requester unit test node -->
+  <test test-name="simple_scheduler_test"
+        pkg="concert_simple_scheduler" type="requester_test.py"
+        name="simple_scheduler_test" time-limit="30.0" />
+
+
+</launch>

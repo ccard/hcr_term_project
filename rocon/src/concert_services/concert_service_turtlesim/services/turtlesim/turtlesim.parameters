@@ -1,0 +1,8 @@
+# These are all req'd, even if empty
+turtles:
+  kobuki:
+    rapp_whitelist: [rocon_apps]
+    concert_whitelist: []
+  guimul:
+    rapp_whitelist: [rocon_apps]
+    concert_whitelist: [] 

@@ -1,0 +1,10 @@
+name: turtlebot
+launch: concert_service_gazebo/turtlebot.launch
+flip_rule:
+  pub:
+    - odom
+    - camer/.*
+    - scan
+    - mobile_base/.*
+  sub:
+    - cmd_vel_mux/.*

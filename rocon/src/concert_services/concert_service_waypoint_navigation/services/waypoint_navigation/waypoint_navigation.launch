@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="concert_service_link_graph" name="office_delivery" type="static_link_graph_service.py">
+    <param name="filename" value="$(find concert_service_waypoint_navigation)/services/waypoint_navigation/waypoint_navigation.link_graph"/>
+  </node>
+</launch>

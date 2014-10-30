@@ -1,0 +1,3 @@
+# Default parameter for teleop service
+allocation_timeout: 15.0
+map_topic: "/map"

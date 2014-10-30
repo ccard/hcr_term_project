@@ -1,0 +1,45 @@
+<launch>
+  <arg name="name" />
+  <arg name="loc_x" />
+  <arg name="loc_y" />
+  <arg name="loc_z" />
+  <arg name="loc_roll"/>
+  <arg name="loc_pitch"/>
+  <arg name="loc_yaw"/>
+  <arg name="world_namespace"/>
+  <arg name="robot_name" default="$(arg name)"/>
+  <arg name="use_full_gazebo_model" default="true"/>
+
+  <arg name="urdf_file" default="$(find segbot_description)/robots/segbot_hokuyo.urdf.xacro" />
+
+  <param name="tf_prefix" value="$(arg name)"/>
+  <!-- launch the appropriate urdf description, as well as the corresponding tf tree -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(arg urdf_file)' use_full_gazebo_model:=$(arg use_full_gazebo_model)" />
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_$(arg name)" 
+           args="-param robot_description
+                 -x $(arg loc_x)
+                 -y $(arg loc_y)
+                 -z $(arg loc_z)  
+                 -R $(arg loc_roll)
+                 -P $(arg loc_pitch)
+                 -Y $(arg loc_yaw)
+                 -unpause 
+                 -urdf 
+                 -model $(arg robot_name)
+                 -gazebo_namespace $(arg world_namespace)
+                " respawn="false" output="screen">
+  </node>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="30.0" />
+    <param name="tf_prefix" value="$(arg name)"/>
+  </node>
+
+  <!-- launch the joint state publisher to default values -->
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+
+  <!-- launch the laser filter to get rid of readings from the robot itself -->
+  <include file="$(find segbot_sensors)/launch/hokuyo/hokuyo-filters.launch" />
+  
+</launch>

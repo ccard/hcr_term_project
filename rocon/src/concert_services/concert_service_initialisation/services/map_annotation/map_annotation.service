@@ -1,0 +1,8 @@
+name: Map Annotation
+description: Annotates semantic location and global markers 
+author: Jihoon Lee 
+# Priority constants are set in scheduler_msgs.Request.XXX_PRIORITY. This should reflect high priority.
+priority: 10000
+launcher_type: roslaunch
+icon: concert_service_initialisation/map_annotation_bubble_icon.png
+interactions: concert_service_initialisation/map_annotation

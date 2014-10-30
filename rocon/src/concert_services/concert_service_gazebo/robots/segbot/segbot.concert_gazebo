@@ -1,0 +1,8 @@
+name: segbot
+launch: concert_service_gazebo/segbot.launch
+flip_rule:
+  pub:
+    - odom
+    - scan_filtered
+  sub:
+    - cmd_vel

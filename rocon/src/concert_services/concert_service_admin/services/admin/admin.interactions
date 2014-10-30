@@ -1,0 +1,34 @@
+###############################################################################
+# A default set of useful interactions for a rocon concert.
+###############################################################################
+
+- name: rocon_gateway_graph
+  role: 'Admin'
+  compatibility: rocon:/pc/*/hydro|indigo/precise|quantal|raring|saucy|trusty
+  display_name: Gateway Graph
+  description: Graph of all elements in a rocon gateway network.
+  max: -1
+- name: concert_conductor_graph
+  role: 'Admin'
+  compatibility: rocon:/pc/*/hydro|indigo/precise|quantal|raring|saucy|trusty
+  display_name: Conductor Graph
+  description: Graph of all elements in a rocon conductor network.
+  max: -1
+- name: rqt_graph
+  role: 'Admin'
+  compatibility: rocon:/pc/*/hydro|indigo/precise|quantal|raring|saucy|trusty
+  display_name: Ros Graph
+  description: Graph of all topics and services in the concert workspace.
+  max: -1
+- name: concert_info
+  role: 'Admin'
+  compatibility: rocon:/pc/*/hydro|indigo/precise|quantal|raring|saucy|trusty
+  display_name: Concert Info
+  description: Generic information about this concert.
+  max: -1
+- name: concert_admin_app
+  role: 'Admin'
+  compatibility: rocon:/pc/*/hydro|indigo/precise|quantal|raring|saucy|trusty
+  display_name: Concert Service Administration
+  description: Configure, enable/disable services
+  max: 1 
