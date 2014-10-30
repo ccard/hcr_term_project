@@ -1,0 +1,21 @@
+[submodule "turtlebot/src/turtlebot_apps"]
+	path = turtlebot/src/turtlebot_apps
+	url = https://github.com/turtlebot/turtlebot_apps.git
+[submodule "turtlebot/src/turtlebot"]
+	path = turtlebot/src/turtlebot
+	url = https://github.com/turtlebot/turtlebot.git
+[submodule "turtlebot/src/turtlebot_create"]
+	path = turtlebot/src/turtlebot_create
+	url = https://github.com/turtlebot/turtlebot_create.git
+[submodule "turtlebot/src/turtlebot_simulator"]
+	path = turtlebot/src/turtlebot_simulator
+	url = https://github.com/turtlebot/turtlebot_simulator.git
+[submodule "turtlebot/src/turtlebot_msgs"]
+	path = turtlebot/src/turtlebot_msgs
+	url = https://github.com/turtlebot/turtlebot_msgs.git
+[submodule "turtlebot/src/turtlebot_viz"]
+	path = turtlebot/src/turtlebot_viz
+	url = https://github.com/turtlebot/turtlebot_viz.git
+[submodule "turtlebot/src/map_store"]
+	path = turtlebot/src/map_store
+	url = https://github.com/ros-planning/map_store.git
