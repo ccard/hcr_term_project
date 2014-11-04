@@ -1,3 +1,0 @@
-<launch>
-  <node pkg="rocon_unreliable_experiments" name="talker" type="talker"/>
-</launch>

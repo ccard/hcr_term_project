@@ -1,3 +1,0 @@
-
-TestiesPairRequest pair_request
-TestiesPairResponse pair_response

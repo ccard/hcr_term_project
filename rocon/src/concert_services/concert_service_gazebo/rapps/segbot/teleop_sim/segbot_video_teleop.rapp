@@ -1,6 +1,0 @@
-display:          Teleop
-description:      Drive a segbot with a touch joystick.
-compatibility:    rocon:/segbot
-launch:           video_teleop.launch
-icon:             teleop_bubble_icon.png
-parent_name:      rocon_apps/video_teleop

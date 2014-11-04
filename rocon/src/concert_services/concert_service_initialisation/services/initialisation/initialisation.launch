@@ -1,4 +1,0 @@
-<launch>
-  <node pkg="concert_service_initialisation" type="make_a_map_pimp.py" name="make_a_map_pimp" required="true">
-  </node>
-</launch>

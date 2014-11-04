@@ -1,3 +1,0 @@
-# Default parameter for initialisation service
-allocation_timeout: 15.0
-map_topic: "/map"

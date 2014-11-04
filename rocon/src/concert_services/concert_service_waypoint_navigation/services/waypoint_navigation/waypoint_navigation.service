@@ -1,6 +1,0 @@
-name: WaypointNavigation 
-description: "Commands robot to navigate around"
-author: Jihoon 
-priority: 2
-launcher_type: roslaunch
-launcher: concert_service_waypoint_navigation/waypoint_navigation
