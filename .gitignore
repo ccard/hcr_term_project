@@ -55,3 +55,7 @@ docs/*.*.gz
 *setup.bash
 */build/*
 */devel/*
+
+rocon/*
+kobuki/*
+turtlebot/*
