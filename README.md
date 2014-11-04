@@ -28,3 +28,8 @@ __Authors__: Chris Card, Marshall Sweatt
 
 ---------------
 # Execution #
+
+
+
+# how to control kobuki remotely from topics #
+publish kobuki_msgs/KeyboardInput object to  /keyop/teleop when running kobuki_keyop keyop.launch
