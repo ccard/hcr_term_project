@@ -1,3 +1,0 @@
-compatibility: rocon:/*
-launch: rocon_apps/child_talker.launch
-parent_name: cyclic/parent

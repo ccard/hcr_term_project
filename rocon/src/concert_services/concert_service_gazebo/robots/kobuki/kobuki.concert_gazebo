@@ -1,7 +1,0 @@
-name: kobuki
-launch: concert_service_gazebo/kobuki.launch
-flip_rule:
-  pub:
-    - odom
-  sub:
-    - mobile_base/.*    # Regex

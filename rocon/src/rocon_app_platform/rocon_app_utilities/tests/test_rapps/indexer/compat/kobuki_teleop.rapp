@@ -1,3 +1,0 @@
-compatibility: rocon:/kobuki
-launch: rocon_apps/talker.launch
-parent_name: compat/teleop

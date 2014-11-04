@@ -1,4 +1,0 @@
-display:          Teleop
-description:      Teleoperate ...
-icon:             joystick.png
-public_interface: teleop.interface

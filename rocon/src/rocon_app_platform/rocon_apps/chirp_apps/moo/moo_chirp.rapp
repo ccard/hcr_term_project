@@ -1,5 +1,0 @@
-display: Moo Chirp
-description: Make an audible "moo" sound.
-compatibility: rocon:/
-launch: moo_chirp.launch
-parent_name: rocon_apps/chirp

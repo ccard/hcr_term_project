@@ -1,3 +1,0 @@
-<launch>
-  <node name="listener" pkg="rospy_tutorials" type="listener" required="true"/>
-</launch>

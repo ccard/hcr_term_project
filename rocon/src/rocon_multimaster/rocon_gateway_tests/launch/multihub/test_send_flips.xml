@@ -1,3 +1,0 @@
-<launch>
-  <test test-name="test_flips" pkg="rocon_gateway_tests" type="test_flips.py"/>
-</launch>

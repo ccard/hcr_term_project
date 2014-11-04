@@ -1,4 +1,0 @@
-<launch>
-  <node pkg="concert_service_teleop" type="teleop_pimp.py" name="teleop_pimp" required="true">
-  </node>
-</launch>
