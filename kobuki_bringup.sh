@@ -81,4 +81,7 @@ echo "Terminating processes .... "
 kill $pid_keyop
 kill $pid_turtle
 
+echo "Killing the straglers .... "
+`pkill -f ${roscmd}`
+
 echo "All done have a nice day!"
