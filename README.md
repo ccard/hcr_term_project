@@ -16,7 +16,7 @@ __Authors__: Chris Card, Marshall Sweatt
 
 ---------------
 # Environment #
-&nbsp;&nbsp;This section describes how to setup the environment on the turtlebot and workstation.  It also describes the expected environment that it will be run in.
+&nbsp;&nbsp;This section describes how to setup the environment on the turtlebot and workstation.  It also describes the expected environment that it will be run in. __Note:__ These steps must be repeated for every new terminal opened.
 
 ## Expected environment ##
  - Ubuntu 14.04 or higher
