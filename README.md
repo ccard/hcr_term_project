@@ -22,7 +22,7 @@ __Authors__: Chris Card, Marshall Sweatt
 &nbsp;&nbsp;&nbsp;To perform the environment setup of the turtlebot
  - Run `source env.sh` from the project directory
  - Run `source network_kobuki.sh` from the project directory
- - Run `./kobuki_bringup.sh` to prep the turtlebot for remote telleoperation
+
 
 ---------------
 # Compilation #
@@ -30,6 +30,10 @@ __Authors__: Chris Card, Marshall Sweatt
 ---------------
 # Execution #
 
+## Turtlebot ##
+&nbsp;&nbsp;&nbsp; This section describes how to execuite the project on the turlebot. Please follow these steps in order:
+- Run `./kobuki_bringup.sh` to prep the turtlebot for remote telleoperation for movement controll
+- Run `blah` to bring up our slam program
 
 
 # how to control kobuki remotely from topics #
