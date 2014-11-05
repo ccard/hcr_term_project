@@ -20,7 +20,9 @@ __Authors__: Chris Card, Marshall Sweatt
 
 ## Expected environment ##
  - Ubuntu 14.04 or higher
+ - Turtlebot with connect and kobuki base
  - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu)
+ - The Turtlebot ROS packages as installed from the [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation)
  - The command `source /opt/ros/indigo/setup.bash` has been run
 
 ## Workstation ##
