@@ -76,3 +76,9 @@ endros result
 while [[ $result != "y" ]]; do
 	endros result
 done
+
+echo "Terminating processes .... "
+kill $pid_keyop
+kill $pid_turtle
+
+echo "All done have a nice day!"
