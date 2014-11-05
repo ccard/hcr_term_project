@@ -2,6 +2,16 @@ HCR Term Project
 ================
 __Authors__: Chris Card, Marshall Sweatt
 
+# Table of Contents #
+ - [Introduction](#introduction)
+ - [Environment](#environment)
+ - [Compilation](#compilation)
+ - [Execution](#execution)
+ - [Results](#results)
+ - [References](#references)
+ - [Appendix](#appendix)
+
+----------------
 # Introduction #
 
 ---------------
@@ -10,7 +20,7 @@ __Authors__: Chris Card, Marshall Sweatt
 
 ## Expected environment ##
  - Ubuntu 14.04 or higher
- - ROS Indigo
+ - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu)
  - The command `source /opt/ros/indigo/setup.bash` has been run
 
 ## Workstation ##
@@ -35,6 +45,13 @@ __Authors__: Chris Card, Marshall Sweatt
 - Run `./kobuki_bringup.sh` to prep the turtlebot for remote telleoperation for movement controll
 - Run `blah` to bring up our slam program
 
+# Results #
+
+# References #
+
+# Appendix #
+
+# Notes #
 
 # how to control kobuki remotely from topics #
 publish kobuki_msgs/KeyboardInput object to  /keyop/teleop when running kobuki_keyop keyop.launch to control kobuki base
