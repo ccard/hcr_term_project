@@ -22,9 +22,9 @@ kobuki_err="${logdir}/kobuki_err.log"
 turtlebot_log_options="> ${turtlebot_std} 2> ${turtlebot_err}"
 kobuki_log_options="> ${kobuki_std} 2> ${kobuki_err}"
 
-turtlebot_cmd="${roslaunch} ${turtlebot} ${turtlebot_log_options}"
+turtlebot_cmd="${roscmd} ${turtlebot} ${turtlebot_log_options}"
 
-kobuki_cmd="${roslaunch} ${keyop} ${kobuki_log_options}"
+kobuki_cmd="${roscmd} ${keyop} ${kobuki_log_options}"
 
 if [[ ! -d $logdir ]]; then
 	echo -n "Creating logs dir .... "
