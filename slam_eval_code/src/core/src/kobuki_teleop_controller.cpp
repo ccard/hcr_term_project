@@ -21,6 +21,7 @@ namspace kobuki
 		bool init(){
 			enable_controller_subscriber_ = nh_.subscribe("enable",10, &KeyboardController::enableKC, this);
 			disable_controller_subscriber_ = nh_.subscribe("disable",10, &KeyboardController::disableKC, this);
+			key_event_subscriber_ = nh_.subscribe("slam_kobuki/keyop",10, &KeyboardController::keyEventKC, this);
 			key_publisher_ = nh_.advertise<kobuki_msgs::KeyboardInput>("keyop/teleop",10);
 			return true;
 		};
@@ -29,6 +30,7 @@ namspace kobuki
 		ros::NodeHandle nh_;
 		std::string name_;
 		ros::Subscriber enable_controller_subscriber_, disable_controller_subscriber_;
+		ros:Subscriber key_event_subscriber_;
 		ros::Publisher key_publisher_;
 
 		/**
@@ -43,6 +45,8 @@ namspace kobuki
 		 * @param: msg incoming topic msg
 		 */
 		void disableKC(const std_msgs::EmptyConstPtr msg);
+
+		void keyEventKC(const kobuki_msgs::KeyboardInputConstPtr msg);
 	};
 
 	void KeyboardController::enableKC(const std_msgs::EmptyConstPtr msg){
@@ -58,6 +62,21 @@ namspace kobuki
 			ROS_INFO_STREAM("Controller has been disabled.[" << name_ << "]");
 		} else {
 			ROS_INFO_STREAM("Controller was already disabled.[" << name_ << "]");
+		}
+	};
+
+	void KeyboardController::keyEventKC(cosn kobuki_msgs::KeyboardInputConstPtr msg){
+		if (this->getSTate())
+		{
+			kobuki_msgs::KeyboardInputptr key_msg_ptr;
+			key_msg_ptr.reset(new kobuki_msgs::KeyboardInput());
+			
+			//TODO: Replace this with controll checks when implementing slam methods
+			//if(msg->state == kobuki_msgs::KeyboardInput::KeyCode_Right){
+				ROS_INFO_STREAM("Key Pressed.[" << name_ << "]");
+				//key_msg_ptr->value = kobuki_msgs
+				key_publisher_.publish(msg);
+			//}
 		}
 	};
 }
