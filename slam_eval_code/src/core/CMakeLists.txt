@@ -7,7 +7,6 @@ project(core)
 find_package(catkin REQUIRED COMPONENTS
   kobuki_msgs
   roscpp
-  rospy
   std_msgs
 )
 
@@ -46,16 +45,18 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Generate messages in the 'msg' folder
 # add_message_files(
+#   DIRECTORY
+#   msg
 #   FILES
-#   Message1.msg
-#   Message2.msg
+#   Num.msg
 # )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
+#   DIRECTORY
+#   srv
 #   FILES
-#   Service1.srv
-#   Service2.srv
+#   AddTwoInts.srv
 # )
 
 ## Generate actions in the 'action' folder
@@ -66,10 +67,11 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   kobuki_msgs#   std_msgs
-# )
+generate_messages(
+   DEPENDENCIES
+   kobuki_msgs
+     std_msgs
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -81,10 +83,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES core
-#  CATKIN_DEPENDS kobuki_msgs roscpp rospy std_msgs
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  LIBRARIES core
+  CATKIN_DEPENDS kobuki_msgs roscpp std_msgs
+  DEPENDS system_lib
 )
 
 ###########
@@ -93,7 +95,7 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(include)
+include_directories(include ${catkin_INCLUDE_DRIS})
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
@@ -104,16 +106,16 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-# add_executable(core_node src/core_node.cpp)
+add_executable(keyop_controll_publisher src/keyop_controll_publisher.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(core_node core_generate_messages_cpp)
+ add_dependencies(keyop_controll_publisher core_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(core_node
-#   ${catkin_LIBRARIES}
-# )
+ target_link_libraries(keyop_controll_publisher
+   ${catkin_LIBRARIES}
+ )
 
 #############
 ## Install ##
@@ -130,7 +132,7 @@ include_directories(
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS core core_node
+# install(TARGETS core keyop_controll_publisher
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
