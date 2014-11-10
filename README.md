@@ -24,6 +24,7 @@ __Authors__: Chris Card, Marshall Sweatt
  - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu)
  - The Turtlebot ROS packages as installed from the [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation)
  - The command `source /opt/ros/indigo/setup.bash` has been run
+ - the ncurses library is installed to do so run `sudo apt-get install libncurses5-dev`
 
 ## Workstation ##
 &nbsp;&nbsp;&nbsp;To perform the environment setup of the workstation
