@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   kobuki_msgs
   roscpp
   std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -85,7 +86,7 @@ generate_messages(
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES core
-  CATKIN_DEPENDS kobuki_msgs roscpp std_msgs
+  CATKIN_DEPENDS kobuki_msgs roscpp std_msgs message_runtime
   DEPENDS system_lib
 )
 

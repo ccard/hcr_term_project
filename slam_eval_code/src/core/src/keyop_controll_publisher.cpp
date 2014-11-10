@@ -16,22 +16,21 @@
 
  	ros::Publisher keyop_pub = n.advertise<kobuki_msgs::KeyboardInput>("keyop/teleop", 1000);
 
- 	ros::Rate loop_rate(10);
+ 	ros::Rate loop_rate(0.5);
 
  	int count = 0;
  	while(ros::ok()){
 
- 		kobuki_msgs::KeyboardInputptr msgptr;
- 		msgptr.reset(new kobuki_msgs::KeyboardInput());
+ 		kobuki_msgs::KeyboardInput msgptr;
+ 		//msgptr.reset(new kobuki_msgs::KeyboardInput());
 
- 		if (count%2 == 0)
- 		{
- 			msgptr.value = kobuki_msgs::KeyboardInput::KeyCode_Right;
+ 		if (count%2 == 0){
+ 			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Right;
  		} else {
- 			msgptr->value = kobuki_msgs::KeyboardInput::KeyCode_Left;
+ 			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Left;
  		}
 
- 		ROS_INFO("%s", "i am turining im turingin :)");
+ 		ROS_INFO("%s", "i am turining im turingin :)");//,std::string(msgptr.pressedKey));
 
  		keyop_pub.publish(msgptr);
 
