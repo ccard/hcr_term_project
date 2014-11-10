@@ -21,36 +21,73 @@
 
  	int count = 0;
  	initscr(); //start cures mode
- 		printw("use up arrow to increase forward velocity\n");
- 		printw("use down arrow to increase reverse velocity\n");
- 		printw("use left arrow to increase left motor velocity\n");
- 		printw("use right arrow to increase right motor velocity\n");
- 		printw("use d to disable motor\n");
- 		printw("use e to enable motors\n");
- 		printw("Use q to quite\n");
- 		refresh();//print to real screen
+ 	cbreak();
+ 	noecho();
+ 	keypad(stdscr, true);
+ 	intrflush(stdscr,false);
+ 		
  	while(ros::ok()){
 
+ 		if(count%10 == 0){
+ 			clear();
+ 			printw("use up arrow to increase forward velocity\n");
+ 			printw("use down arrow to increase reverse velocity\n");
+ 			printw("use left arrow to increase left motor velocity\n");
+	 		printw("use right arrow to increase right motor velocity\n");
+ 			printw("use d to disable motor\n");
+ 			printw("use e to enable motors\n");
+ 			printw("Use q to quite\n");
+		}
+		//refresh();//prints to real screen
+ 		
  		char key = getch();
  		if(key == 'q'){ break; }
- 		printw("key pressed "+key);
- 		printw("\n");
- 		refresh();
+ 		printw("%d\n",key);
+ 		
  		kobuki_msgs::KeyboardInput msgptr;
- 		//msgptr.reset(new kobuki_msgs::KeyboardInput());
 
- 		if (count%2 == 0){
+ 		switch(key){
+ 		case 2: //keydown
+ 			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Down;
+ 			keyop_pub.publish(msgptr);
+ 			break;
+ 		case 3://KEY_UP:
+ 			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Up;
+ 			keyop_pub.publish(msgptr);
+ 			break;
+ 		case 5://KEY_RIGHT:
  			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Right;
- 		} else {
+ 			keyop_pub.publish(msgptr);
+ 			break;
+ 		case 4://KEY_LEFT:
  			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Left;
+ 			keyop_pub.publish(msgptr);
+ 			break;
+ 		case 'e':
+ 			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Enable;
+ 			keyop_pub.publish(msgptr);
+ 			break;
+ 		case 'd':
+ 			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Disable;
+ 			keyop_pub.publish(msgptr);
+ 			break;
+ 		case kobuki_msgs::KeyboardInput::KeyCode_Space:
+ 			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Space;
+ 			keyop_pub.publish(msgptr);
+ 			break;
+ 		default:
+ 			//TODO: publish to other threads for the slame methods
+ 			break;
  		}
 
- 		ROS_INFO("%s\n", "i am turining im turingin :)");//,std::string(msgptr.pressedKey));
+ 		//ROS_INFO("%s\n", "i am turining im turingin :)");//,std::string(msgptr.pressedKey));
+
+ 		printw("%s\n","I am now publishing!");
 		refresh();
- 		keyop_pub.publish(msgptr);
 
  		loop_rate.sleep();
  		++count;
+
  	}
  	endwin();
  	return 0;
