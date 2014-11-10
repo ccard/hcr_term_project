@@ -116,6 +116,7 @@ add_executable(keyop_controll_publisher src/keyop_controll_publisher.cpp)
 ## Specify libraries to link a library or executable target against
  target_link_libraries(keyop_controll_publisher
    ${catkin_LIBRARIES}
+   ncurses
  )
 
 #############
