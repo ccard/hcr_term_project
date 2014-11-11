@@ -56,7 +56,11 @@ __Authors__: Chris Card, Marshall Sweatt
 
 # Notes #
 
-# how to control kobuki remotely from topics #
+# usage notes: #
+rosrun image_view disparity_view image:=/camera/depth_registered/disparity
+
+## how to control kobuki remotely from topics #
+
 publish kobuki_msgs/KeyboardInput object to  /keyop/teleop when running kobuki_keyop keyop.launch to control kobuki base
 
 all slam project topics begin with `slam_kobuki` i.e. `slam_kobuki/keyop`
