@@ -1,0 +1,8 @@
+<!-- 
+	slam keyop operation
+-->
+<launch>
+	<node pkg="nodelet" type="nodelet" name="slam_keyop_controller" args="load core/src/KeyboardControllerNodelet mobile_base_nodelet_manager">
+		<remap from="slam_keyop_controller/keyop/teleop" to="keyop/teleop"/>
+	</node>
+</launch>

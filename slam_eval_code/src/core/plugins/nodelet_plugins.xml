@@ -1,0 +1,7 @@
+<library path="lib/libkeyboard_controller_nodelet">
+	<class name="core/src/KeyboardControllerNodelet" type="kobuki::KeyboardControllerNodelet" base_class_type="nodelet::Nodelet">
+		<description>
+			Nodelet for keyboard teleop controller
+		</description>
+	</class>
+</library>
