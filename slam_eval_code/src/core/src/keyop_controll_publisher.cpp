@@ -21,28 +21,27 @@
 
  	int count = 0;
  	initscr(); //start cures mode
- 	cbreak();
- 	noecho();
- 	keypad(stdscr, true);
- 	intrflush(stdscr,false);
+ 	cbreak(); //This method means no line breaks when using getch (i.e. enter doesn't have to be hit)
+ 	noecho(); //Prevents getch from echoing the keyboard output
+ 	keypad(stdscr, true); //turns arrow keys from a 3 character sequence into numbers 2-4
+ 	intrflush(stdscr,false); //prevnents flushing to the standard screen (i think)
  		
  	while(ros::ok()){
 
  		if(count%10 == 0){
  			clear();
- 			printw("use up arrow to increase forward velocity\n");
- 			printw("use down arrow to increase reverse velocity\n");
- 			printw("use left arrow to increase left motor velocity\n");
-	 		printw("use right arrow to increase right motor velocity\n");
- 			printw("use d to disable motor\n");
- 			printw("use e to enable motors\n");
- 			printw("Use q to quite\n");
+ 			printw("up arrow:   %s", "increase forward velocity\n");
+ 			printw("down arrow: %s", "increase reverse velocity\n");
+ 			printw("left arrow: %s", "increase left motor velocity\n");
+	 		printw("right arrow:%s", "increase right motor velocity\n");
+ 			printw("d:          %s", "disable motor\n");
+ 			printw("e:          %s", "enable motors\n");
+ 			printw("q:          %s", "quit\n");
 		}
-		//refresh();//prints to real screen
  		
  		char key = getch();
  		if(key == 'q'){ break; }
- 		printw("%d\n",key);
+ 		//printw("%d\n",key); //key checking
  		
  		kobuki_msgs::KeyboardInput msgptr;
 
@@ -76,7 +75,7 @@
  			keyop_pub.publish(msgptr);
  			break;
  		default:
- 			//TODO: publish to other threads for the slame methods
+ 			//TODO: publish to other threads for the slam methods
  			break;
  		}
 
@@ -87,7 +86,6 @@
 
  		loop_rate.sleep();
  		++count;
-
  	}
  	endwin();
  	return 0;
