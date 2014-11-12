@@ -56,7 +56,15 @@ __Authors__: Chris Card, Marshall Sweatt
 
 # Notes #
 
-# how to control kobuki remotely from topics #
+# usage notes: #
+
+## how to check if kinect is working ##
+first run this command `roslaunch turtlebot_bringup 3dsensor.launch`
+Use this command to check if kinect is working `rosrun image_view disparity_view image:=/camera/depth_registered/disparity`
+if using ubuntu 14 indigo not working then follow this [post](https://github.com/OpenPTrack/open_ptrack/issues/19)
+
+## how to control kobuki remotely from topics ##
+
 publish kobuki_msgs/KeyboardInput object to  /keyop/teleop when running kobuki_keyop keyop.launch to control kobuki base
 
 all slam project topics begin with `slam_kobuki` i.e. `slam_kobuki/keyop`
