@@ -26,6 +26,3 @@
 	path = turtlebot/src/map_store
 	url = https://github.com/ros-planning/map_store.git
 	ignore = dirty
-[submodule "slam_eval_code/src/hector_slam"]
-	path = slam_eval_code/src/hector_slam
-	url = https://github.com/tu-darmstadt-ros-pkg/hector_slam.git
