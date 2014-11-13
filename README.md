@@ -68,3 +68,9 @@ if using ubuntu 14 indigo not working then follow this [post](https://github.com
 publish kobuki_msgs/KeyboardInput object to  /keyop/teleop when running kobuki_keyop keyop.launch to control kobuki base
 
 all slam project topics begin with `slam_kobuki` i.e. `slam_kobuki/keyop`
+
+## how to get gmapping to work :) ##
+follow this [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Build%20a%20map%20with%20SLAM)
+in one terminal run `roslaunch turtlebot_bringup minimal.launch`
+in a seperat terminal run `roslaunch turtlebot_navigation gmapping_demo.launch`
+in a seperat terminal run `roslaunch turtlebot_rviz_launch view_navigation.launch`
