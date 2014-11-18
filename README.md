@@ -82,3 +82,12 @@ in one terminal run `./kobuki_bringup.sh`
 in a seperate terminal run `roslaunch turtlebot_navigation gmapping_demo.launch`
 in a seperate terminal run `roslaunch turtlebot_rviz_launch view_navigation.launch`
 in a seperate terminal run `rosrun core keyop_controller_publisher`
+
+## Running Autonomously? ##
+Follow this [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autonomously%20navigate%20in%20a%20known%20map)
+Must have both `<file_name>.pgm` and `<file_name>.yaml` in tmp folder.
+in one terminal run `./kobuki_bringup.sh`
+in second terminal run `roslaunch core generateOdomAndSlam.launch map_file:=/tmp/<file_name>.yaml`
+in fourth terminal run `roslaunch turtlebot_rviz_launchers view_navigation.launch --screen`
+#in second terminal run `roslaunch core generateOdomAndSlam.launch'
+#in third terminal run `roslaunch turtlebot_navigation amcl_demo.launch map_file:=/tmp/<file_name>.yaml`
