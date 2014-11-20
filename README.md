@@ -69,8 +69,8 @@ __Note__: If having trouble getting kinect to work on ubuntu 14.04 follow this [
  - In the first terminal run `./autonomus_navigation.sh /tmp/<file_name>.yaml`
  - In the second terminal run `roslaunch turtlebot_rviz_launchers view_navigation.launch --screen`
  - Once rviz is running click on interact and while holding the right mouse button zoom out
- -- Then click 2d pose estimite and click and hold where the robot is approximently and drag the arrow in the direction that the robot is facing then release
- -- Once the black dot and the green arrow cloud is where the robot is then click on 2d nav point. Then click and hold where you want the robot to go and drag the green arrow in the direction you want the robot to be facing when finished and then release the mouse and the robot will start moving. (_note_: it will not run into walls but if it does it will stop). 
+  - Then click 2d pose estimite and click and hold where the robot is approximently and drag the arrow in the direction that the robot is facing then release
+  - Once the black dot and the green arrow cloud is where the robot is then click on 2d nav point. Then click and hold where you want the robot to go and drag the green arrow in the direction you want the robot to be facing when finished and then release the mouse and the robot will start moving. (_note_: it will not run into walls but if it does it will stop). 
 
 ## Workstation ##
 &nbsp;&nbsp;&nbsp; This section describes how to execute the on the work station after the above [turtlebot bringup](#turtlebot_bringup) and environment setup has been completed: run `rosrun core keyop_controller_publisher` this will allow you to remote control the turtle bot. If you want to control the turtlebot from the turtlebot computer just simply run the command from a sourced terminal.
