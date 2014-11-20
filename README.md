@@ -50,8 +50,8 @@ __Authors__: Chris Card, Marshall Sweatt
 &nbsp;&nbsp;&nbsp; This section describes how to execute the project on the turlebot. Please follow these steps in order and open 3 terminals using the env setup above:
 - In terminal 1 `./kobuki_bringup.sh` to prep the turtlebot for remote telleoperation for movement controll
 - In terminal 2 run `./gmapping_bringup.sh` add `-s` if you want the rviz terminal.
-- ~~ In terminal 2 run `roslaunch turtlebot_navigation gmapping_demo.launch` to bring the gmapping slam program ~~
-- ~~ In terminal 3 run `roslaunch turtlebot_rviz_launchers view_navigation.launch` ~~
+- ~~In terminal 2 run `roslaunch turtlebot_navigation gmapping_demo.launch` to bring the gmapping slam program~~
+- ~~In terminal 3 run `roslaunch turtlebot_rviz_launchers view_navigation.launch~~
 - When finished mapping (___Do not stop any of the prgrams___) in the third terminal run the command `rosrun map_server map_saver -f /tmp/my_map` to save the slam map once this is done the programs can be terminated
 
 ### Running Autonomously ###
