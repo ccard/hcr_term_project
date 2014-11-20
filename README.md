@@ -92,7 +92,7 @@ __Note__: If having trouble getting kinect to work on ubuntu 14.04 follow this [
 
 
 # Appendix #
- - All test SLAM files are in `./hallway_results/` or `./Test/`.  If you would like  to test autonomous navigation using one of our premade maps, we suggest you use `./Test/hall_all_1`.
+ - All test SLAM files are in `./hallway_results/` or `./Test/`.  If you would like  to test autonomous navigation using one of our premade maps, we suggest you use `./hallway_results/video_map/hall_l0ng_1_2`.
  - `/slam_eval_code/src/core` contains all of the code we wrote and launch files.  The only launch file that we use is `generateOdomAndSlam.launch`, the rest are for testing use.
  - `/docs/` contain our termproject paper (not yet complete)
  - `./autonomus_nav.sh /tmp/<file_name>.yaml` is the command to start the keyop controller and autonomus navigation stack with the map passed in. Please refer to the above sections for instructions on how to start.
