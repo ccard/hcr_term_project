@@ -61,3 +61,12 @@ if [[ $o == "-3" || "$#" -eq 0 ]]; then
 	catkin_make
 	cd ..
 fi
+
+if [[ -d "turtlebot" ]]; then
+	cd turtlebot
+	if [[ -d "devel" ]]; then
+		source ./devel/setup.bash
+		rosrun kobuki_ftdi create_udev_rules
+	fi
+	cd ..
+fi
