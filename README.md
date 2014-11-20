@@ -19,10 +19,10 @@ __Authors__: Chris Card, Marshall Sweatt
 &nbsp;&nbsp;This section describes how to setup the environment on the turtlebot and workstation.  It also describes the expected environment that it will be run in. __Note:__ These steps must be repeated for every new terminal opened.
 
 ## Expected environment ##
- - Ubuntu 14.04 or higher
+ - Ubuntu 14.04 or higher (__!!Not Guarunteed to work with out this!!__)
  - Turtlebot with connect and kobuki base
- - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu)
- - The Turtlebot ROS packages as installed from the [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation)
+ - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu) (__!!Not Guarunteed to work with out this!!__)
+ - Run `source setup.sh` to get all the necessary files for the turtlebots. This script performs the setup for the Turtlebot ROS packages as described in the [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation) (__note__ if you are having trouble installing turtlebot packages please follow the tutorial)
  - The command `source /opt/ros/indigo/setup.bash` has been run
  - the ncurses library is installed to do so run `sudo apt-get install libncurses5-dev`
  - The hector slam  program `sudo apt-get install ros-indigo-slam-gmapping`
@@ -46,24 +46,33 @@ __Authors__: Chris Card, Marshall Sweatt
 # Execution #
 
 ## Turtlebot Bringup ##
-&nbsp;&nbsp;&nbsp; This section describes how to execute the project on the turlebot. Please follow these steps in order and open 4 terminals using the env setup above:
+### Creating SLAM map ###
+&nbsp;&nbsp;&nbsp; This section describes how to execute the project on the turlebot. Please follow these steps in order and open 3 terminals using the env setup above:
 - In terminal 1 `./kobuki_bringup.sh` to prep the turtlebot for remote telleoperation for movement controll
-- In terminal 2 run `roslaunch turtlebot_navigation gmapping_demo.launch` to bring the gmapping slam program
-- In terminal 3 run `roslaunch turtlebot_rviz_launchers view_navigation.launch`
-- When finished mapping (___Do not stop any of the prgrams___) in the fourth terminal run the command `rosrun map_server map_saver -f /tmp/my_map` to save the slam map once this is done the programs can be terminated
+- In terminal 2 run `./gmapping_bringup.sh` add `-s` if you want the rviz terminal.
+~~- In terminal 2 run `roslaunch turtlebot_navigation gmapping_demo.launch` to bring the gmapping slam program
+- In terminal 3 run `roslaunch turtlebot_rviz_launchers view_navigation.launch`~~
+- When finished mapping (___Do not stop any of the prgrams___) in the third terminal run the command `rosrun map_server map_saver -f /tmp/my_map` to save the slam map once this is done the programs can be terminated
+
+### Running Autonomously ###
+Follow this [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autonomously%20navigate%20in%20a%20known%20map)
+ - Must have both `<file_name>.pgm` and `<file_name>.yaml` in tmp folder.
+ - in one terminal run `./autonomus_navigation.sh /tmp/<file_name>.yaml`
+ - in the second terminal run `roslaunch turtlebot_rviz_launchers view_navigation.launch --screen`
 
 ## Workstation ##
 &nbsp;&nbsp;&nbsp; This section describes how to execute the on the work station after the above [turtlebot bringup](#turtlebot_bringup) and environment setup has been completed: run `rosrun core keyop_controller_publisher` this will allow you to remote control the turtle bot.
 
 # Results #
 
+&nbsp;&nbsp;__Demo Video__(If not working click [here](http://www.youtube.com/watch?v=1JjsBqtKpcY&list=UUcS7AZZsCauWAlKDbMXsKOw))
+<iframe width="560" height="315" src="//www.youtube.com/embed/1JjsBqtKpcY?list=UUcS7AZZsCauWAlKDbMXsKOw" frameborder="0" allowfullscreen></iframe>
+
 # References #
 
 # Appendix #
 
-# Notes #
-
-# usage notes: #
+# Notes (please disregarad these as they are used only as reminders to ourselves please follow the instructions above) #
 
 ## how to check if kinect is working ##
 first run this command `roslaunch turtlebot_bringup 3dsensor.launch`
