@@ -2,6 +2,8 @@ HCR Term Project
 ================
 __Authors__: Chris Card, Marshall Sweatt
 
+To see the nicely formated version of this file go [here](https://github.com/ccard/hcr_term_project/blob/master/README.md)
+
 # Table of Contents #
  - [Introduction](#introduction)
  - [Environment](#environment)
@@ -89,7 +91,14 @@ __Note__: If having trouble getting kinect to work on ubuntu 14.04 follow this [
 
 
 # Appendix #
-
+ - All test SLAM files are in `./hallway_results/` or `./Test/`, recommend maps to use are:
+ - `/slam_eval_code/src/core` contains all of the code we wrote and launch files the only launch file that we use is `generateOdomAndSlam.launch`
+ - `/docs/` contain our termproject paper (not yet complete)
+ - `./autonomus_nav.sh /tmp/<file_name>.yaml` is the command to start the keyop controller and autonomus navigation stack with the map passed in. Please refer to the above sections for instructions on how to start.
+ - `./gmapping_bringup.sh [-s]` (`[-s]` is optional as it opens rviz which is not needed to create the) when run in conjunction with `./kobuki_bringup.sh` it creates a map. Please refer to the above sections for instructions on how to start.
+ - `source network_kobuki.sh` and `source network_master.sh <kobuki ip address>` automatically sets the `$ROS_MASTER_URI` and `$ROS_HOSTNAME` environmental variables to the correct values on the respective machines.
+ - `source env.sh` builds and sources `/rocon/`,`/kobuki/`, `/turtlebot/` and `/slam_eval_code/` if the envorinment for the turtlebot packages was setup correctly see the environment [section](#environment)
+ - `source setup.sh` will download and install all the necessary turtlebot packages form the referenced tutorial.
 
 --------------------------------------------------------------------------------
 # Notes (please disregarad these as they are used only as reminders to ourselves please follow the instructions above) #
