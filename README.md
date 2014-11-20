@@ -13,19 +13,28 @@ __Authors__: Chris Card, Marshall Sweatt
 
 ----------------
 # Introduction #
+&nbsp;&nbsp;This README describes how to use our program to generate SLAM based on gmapping and then use the generated map to autonomusly navigate through the mapped environment. This rest of this file will explain how to setup the [environment](#environment), how to [compile](#compilation) our program and how to [run](#execution) gmapping and the autonomus navigation.
 
 ---------------
 # Environment #
 &nbsp;&nbsp;This section describes how to setup the environment on the turtlebot and workstation.  It also describes the expected environment that it will be run in. __Note:__ These steps must be repeated for every new terminal opened.
 
 ## Expected environment ##
- - Ubuntu 14.04 or higher (__!!Not Guarunteed to work with out this!!__)
+ - Ubuntu 14.04 (__!!Not Guaranteed to work with out this!!__)
  - Turtlebot with connect and kobuki base
- - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu) (__!!Not Guarunteed to work with out this!!__)
+ - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu) (__!!Not Guaranteed to work with out this!!__)
  - Run `source setup.sh` to get all the necessary files for the turtlebots. This script performs the setup for the Turtlebot ROS packages as described in the [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation) (__note__ if you are having trouble installing turtlebot packages please follow the tutorial)
  - The command `source /opt/ros/indigo/setup.bash` has been run
  - the ncurses library is installed to do so run `sudo apt-get install libncurses5-dev`
  - The hector slam  program `sudo apt-get install ros-indigo-slam-gmapping`
+ - If having trouble getting kinect to work on ubuntu 14.04 follow this [post](https://github.com/OpenPTrack/open_ptrack/issues/19) specifically the post:
+ 
+> I've just found the issue: the latest Ubuntu driver is not working.
+> I solved it by downloading older versions of the drivers ([libopenni-sensor-primesense-dev](https://launchpad.net/%7Ev-launchpad-jochen-sprickerhof-de/+archive/ubuntu/pcl/+build/5252450/+files/libopenni-sensor-primesense-dev_5.1.0.41-3%2Btrusty1_amd64.deb) and [libopenni-sensor-primesense0](https://launchpad.net/%7Ev-launchpad-jochen-sprickerhof-de/+archive/ubuntu/pcl/+build/5252450/+files/libopenni-sensor-primesense0_5.1.0.41-3%2Btrusty1_amd64.deb)) and installing them manually:
+> ```cd ~/Downloads
+sudo dpkg -i libopenni-sensor-primesense*```
+>Hope it works also for you!
+
 
 ## Workstation ##
 &nbsp;&nbsp;&nbsp;To perform the environment setup of the workstation
@@ -50,8 +59,6 @@ __Authors__: Chris Card, Marshall Sweatt
 &nbsp;&nbsp;&nbsp; This section describes how to execute the project on the turlebot. Please follow these steps in order and open 3 terminals using the env setup above:
 - In terminal 1 `./kobuki_bringup.sh` to prep the turtlebot for remote telleoperation for movement controll
 - In terminal 2 run `./gmapping_bringup.sh` add `-s` if you want the rviz terminal.
-- ~~In terminal 2 run `roslaunch turtlebot_navigation gmapping_demo.launch` to bring the gmapping slam program~~
-- ~~In terminal 3 run `roslaunch turtlebot_rviz_launchers view_navigation.launch~~
 - When finished mapping (___Do not stop any of the prgrams___) in the third terminal run the command `rosrun map_server map_saver -f /tmp/my_map` to save the slam map once this is done the programs can be terminated
 
 ### Running Autonomously ###
@@ -69,9 +76,16 @@ Follow this [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autono
 <iframe width="560" height="315" src="//www.youtube.com/embed/1JjsBqtKpcY?list=UUcS7AZZsCauWAlKDbMXsKOw" frameborder="0" allowfullscreen></iframe>
 
 # References #
+- ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu)
+- ROS Indigo turtlebot instilation [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation)
+- Ros gmapping recoding [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Build%20a%20map%20with%20SLAM)
+- Ros autonomus navigation [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autonomously%20navigate%20in%20a%20known%20map)
+
 
 # Appendix #
 
+
+--------------------------------------------------------------------------------
 # Notes (please disregarad these as they are used only as reminders to ourselves please follow the instructions above) #
 
 ## how to check if kinect is working ##
