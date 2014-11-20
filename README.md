@@ -23,7 +23,7 @@ To see the nicely formated version of this file go [here](https://github.com/cca
 
 ## Expected environment ##
  - Ubuntu 14.04 (__!!Not Guaranteed to work with out this!!__)
- - Turtlebot with connect and kobuki base
+ - Turtlebot with Kinect and Kobuki base
  - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu) (__!!Not Guaranteed to work with out this!!__)
  - Run `source setup.sh` to get all the necessary files for the turtlebots. This script performs the setup for the Turtlebot ROS packages as described in the [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation) (__note__ if you are having trouble installing turtlebot packages please follow the tutorial)
  - The command `source /opt/ros/indigo/setup.bash` has been run
