@@ -15,7 +15,7 @@ To see the nicely formated version of this file go [here](https://github.com/cca
 
 ----------------
 # Introduction #
-&nbsp;&nbsp;This README describes how to use our program that generates a SLAM based on gmapping.  This approach then is used to generate a map for autonomusly navigation through the mapped environment. This rest of this file will explain how to setup the [environment](#environment), how to [compile](#compilation) our program and how to [run](#execution) gmapping and the autonomus navigation.
+&nbsp;&nbsp;This README describes how to use our program that generates a SLAM based on gmapping.  This approach is then used to generate a map for autonomusly navigation through the mapped environment. This rest of this file will explain how to setup the [environment](#environment), how to [compile](#compilation) our program and how to [run](#execution) gmapping and the autonomus navigation.
 
 ---------------
 # Environment #
