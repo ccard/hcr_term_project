@@ -40,7 +40,7 @@ if [[ $o == "-2" || "$#" -eq 0 ]]; then
 		mkdir kobuki
 	fi
 	cd kobuki
-	wstool init -j5 src https://raw.github.com/yujinrobot/yujin_tools/master/rosinstalls/indigo/kobuki.rosinstall
+	wstool init src -j5 https://raw.github.com/yujinrobot/yujin_tools/master/rosinstalls/indigo/kobuki.rosinstall
 	source ./../rocon/devel/setup.bash
 	rosdep install --from-paths src -i -y
 
@@ -54,9 +54,9 @@ if [[ $o == "-3" || "$#" -eq 0 ]]; then
 		mkdir turtlebot
 	fi
 	cd turtlebot
-	wstool init -j5 src  https://raw.github.com/yujinrobot/yujin_tools/master/rosinstalls/indigo/turtlebot.rosinstall
+	wstool init src -j5 https://raw.github.com/yujinrobot/yujin_tools/master/rosinstalls/indigo/turtlebot.rosinstall
 	source ./../kobuki/devel/setup.bash
-	rosdep install --from-paths src -i -y
+	rosdep install --from-paths src -i -y -r
 
 	catkin_make
 	cd ..
