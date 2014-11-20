@@ -49,26 +49,32 @@
  		case 2: //keydown
  			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Down;
  			keyop_pub.publish(msgptr);
+ 			printw("Increasing negative velocity\n");
  			break;
  		case 3://KEY_UP:
  			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Up;
  			keyop_pub.publish(msgptr);
+ 			printw("Increasing positive velocity\n");
  			break;
  		case 5://KEY_RIGHT:
  			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Right;
  			keyop_pub.publish(msgptr);
+ 			printw("Incrinsing right angular velocity\n");
  			break;
  		case 4://KEY_LEFT:
  			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Left;
  			keyop_pub.publish(msgptr);
+ 			printw("Increasing left angular velocity\n");
  			break;
  		case 'e':
  			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Enable;
  			keyop_pub.publish(msgptr);
+ 			printw("Enabling motors\n");
  			break;
  		case 'd':
  			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Disable;
  			keyop_pub.publish(msgptr);
+ 			printw("Disabling motors\n");
  			break;
  		case kobuki_msgs::KeyboardInput::KeyCode_Space:
  			msgptr.pressedKey = kobuki_msgs::KeyboardInput::KeyCode_Space;
@@ -81,7 +87,7 @@
 
  		//ROS_INFO("%s\n", "i am turining im turingin :)");//,std::string(msgptr.pressedKey));
 
- 		printw("%s\n","I am now publishing!");
+ 		//printw("%s\n","I am now publishing!");
 		refresh();
 
  		loop_rate.sleep();

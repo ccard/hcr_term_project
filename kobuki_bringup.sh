@@ -62,12 +62,12 @@ echo "${turtlebot_err}, ${kobuki_std}, and ${kobuki_err}"
 echo "Bringingup Turtlebot .... "
 turtlebringup "${turtlebot_cmd}" & pid_turtle=$!
 
-sleep 20
+sleep 10
 
 echo "Bringingup keyop .... "
 keyopbringup "${kobuki_cmd}" & pid_keyop=$!
 
-sleep 20
+sleep 10
 
 echo "Everything should be ready to run .... "
 
