@@ -27,8 +27,8 @@ To see the nicely formated version of this file go [here](https://github.com/cca
  - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu) (__!!Not Guaranteed to work with out this!!__)
  - Run `source setup.sh` to get all the necessary files for the turtlebots. This script performs the setup for the Turtlebot ROS packages as described in the [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation) (__note__ if you are having trouble installing turtlebot packages please follow the tutorial)
  - The command `source /opt/ros/indigo/setup.bash` has been run
- - the ncurses library is installed to do so run `sudo apt-get install libncurses5-dev`
- - The hector slam  program `sudo apt-get install ros-indigo-slam-gmapping`
+ - the ncurses library (used as teleop control interface) is installed. To install run `sudo apt-get install libncurses5-dev`
+ - The gmapping slam program `sudo apt-get install ros-indigo-slam-gmapping`
  
 __Note__: If having trouble getting kinect to work on ubuntu 14.04 follow this [post](https://github.com/OpenPTrack/open_ptrack/issues/19) specifically the post:
 > I've just found the issue: the latest Ubuntu driver is not working.<br>
@@ -51,31 +51,32 @@ __Note__: If having trouble getting kinect to work on ubuntu 14.04 follow this [
 
 ---------------
 # Compilation #
-&nbsp;&nbsp;The program will be compiled when the commmand `source env.sh` is executed.
+&nbsp;&nbsp;The program will be compiled when the commmand `source env.sh` is executed. `source env.sh` compiles and builds the `rocon/`,`kobuki/`, `turtlebot/` and `slam_eval_code/` directories.
 
 ---------------
 # Execution #
+&nbsp;&nbsp;Describes how to run the programs on the robot and master computers.
 
 ## Turtlebot Bringup ##
-&nbsp;&nbsp;This section describes how to bringup the turtlebot for the different tasks. 
+&nbsp;&nbsp;This section describes how to bringup the turtlebot for the different tasks on the computer connected to the turtlebot. 
 
 ### Creating SLAM map ###
 &nbsp;&nbsp;&nbsp; This section describes how to execute the project on the turlebot. Please follow these steps in order and open 3 terminals using the env setup above:
-- In terminal 1 `./kobuki_bringup.sh` to prep the turtlebot for remote telleoperation for movement controll
-- In terminal 2 run `./gmapping_bringup.sh` add `-s` if you want the rviz terminal.
-- When finished mapping (___!!Do not stop any of the prgrams!!___) in the third terminal run the command `rosrun map_server map_saver -f <path>/<file_name>` to save the slam map. Once this is done the programs can be terminated
+- In terminal 1 `./kobuki_bringup.sh` to prep the turtlebot for remote telleoperation for movement control
+- In terminal 2 run `./gmapping_bringup.sh` add `-s` if you want the rviz terminal (We do not use the `-s` option during our testing, but is useful for debugging).
+- When finished mapping (___!!Do not stop any of the prgrams!!___) in the third terminal run the command `rosrun map_server map_saver -f <path>/<file_name>` to save the slam map.  We typically save into our current directory by running `rosrun map_server map saver -f <file_name>`. Once this is done the programs can be terminated.
 
 ### Running Autonomously ###
-&nbsp;&nbsp;&nbsp;The autonomus running scripts of our robot is based on this [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autonomously%20navigate%20in%20a%20known%20map). If you are having difficulty getting our scripts below to work follow the tutorial. (remember to follow the tertlebot section environment section for each terminal)
+&nbsp;&nbsp;&nbsp;The autonomus running scripts of our robot are based on this [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autonomously%20navigate%20in%20a%20known%20map). If you are having difficulty getting our scripts below to work follow the tutorial. (remember to follow the turtlebot section in the previous environment section for each terminal)
  - Must have both `<file_name>.pgm` and `<file_name>.yaml` in `/tmp` folder.
  - In the first terminal run `./autonomus_navigation.sh /tmp/<file_name>.yaml`
  - In the second terminal run `roslaunch turtlebot_rviz_launchers view_navigation.launch --screen`
- - Once rviz is running click on interact and while holding the right mouse button zoom out
+ - Once rviz is running, click on the interact button. Then while holding the right mouse button zoom out.
   - Then click 2d pose estimite and click and hold where the robot is approximently and drag the arrow in the direction that the robot is facing then release
-  - Once the black dot and the green arrow cloud is where the robot is then click on 2d nav point. Then click and hold where you want the robot to go and drag the green arrow in the direction you want the robot to be facing when finished and then release the mouse and the robot will start moving. (_note_: it will not run into walls but if it does it will stop). 
+  - Once the black dot and the green arrow cloud is where the robot is, click on 2d nav point. Click and hold where you want the robot to go and drag the green arrow in the direction you want the robot's final orientation to be and then release the mouse and the robot will start moving. (_note_: it should not run into walls but if it does it will stop). 
 
 ## Workstation ##
-&nbsp;&nbsp;&nbsp; This section describes how to execute the on the work station after the above [turtlebot bringup](#turtlebot_bringup) and environment setup has been completed: run `rosrun core keyop_controller_publisher` this will allow you to remote control the turtle bot. If you want to control the turtlebot from the turtlebot computer just simply run the command from a sourced terminal.
+&nbsp;&nbsp;&nbsp; This section describes how to execute the on the work station after the above [turtlebot bringup](#turtlebot_bringup) and environment setup have been completed: run `rosrun core keyop_controller_publisher` this will allow you to remote control the turtle bot. If you want to control the turtlebot from the turtlebot computer just simply run the command from a sourced terminal.
 
 # Results #
 
@@ -91,13 +92,13 @@ __Note__: If having trouble getting kinect to work on ubuntu 14.04 follow this [
 
 
 # Appendix #
- - All test SLAM files are in `./hallway_results/` or `./Test/`, recommend maps to use are:
- - `/slam_eval_code/src/core` contains all of the code we wrote and launch files the only launch file that we use is `generateOdomAndSlam.launch`
+ - All test SLAM files are in `./hallway_results/` or `./Test/`.  If you would like  to test autonomous navigation using one of our premade maps, we suggest you use `./Test/hall_all_1`.
+ - `/slam_eval_code/src/core` contains all of the code we wrote and launch files.  The only launch file that we use is `generateOdomAndSlam.launch`, the rest are for testing use.
  - `/docs/` contain our termproject paper (not yet complete)
  - `./autonomus_nav.sh /tmp/<file_name>.yaml` is the command to start the keyop controller and autonomus navigation stack with the map passed in. Please refer to the above sections for instructions on how to start.
- - `./gmapping_bringup.sh [-s]` (`[-s]` is optional as it opens rviz which is not needed to create the) when run in conjunction with `./kobuki_bringup.sh` it creates a map. Please refer to the above sections for instructions on how to start.
- - `source network_kobuki.sh` and `source network_master.sh <kobuki ip address>` automatically sets the `$ROS_MASTER_URI` and `$ROS_HOSTNAME` environmental variables to the correct values on the respective machines.
- - `source env.sh` builds and sources `/rocon/`,`/kobuki/`, `/turtlebot/` and `/slam_eval_code/` if the envorinment for the turtlebot packages was setup correctly see the environment [section](#environment)
+ - `./gmapping_bringup.sh [-s]` (`[-s]` is optional as it opens rviz which is not needed to create the map).  When run in conjunction with `./kobuki_bringup.sh` it creates a map. Please refer to the above sections for instructions on how to start.
+ - `source network_kobuki.sh` and `source network_master.sh <kobuki ip address>` automatically sets the `$ROS_MASTER_URI` and `$ROS_HOSTNAME` environmental variables to the correct values on the respective machines to establish communication between the robot and workstation.
+ - `source env.sh` builds and sources `/rocon/`,`/kobuki/`, `/turtlebot/` and `/slam_eval_code/` if the envorinment for the turtlebot packages was setup correctly.  See the environment [section](#environment) to do this.
  - `source setup.sh` will download and install all the necessary turtlebot packages form the referenced tutorial.
 
 --------------------------------------------------------------------------------
