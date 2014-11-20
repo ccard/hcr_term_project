@@ -37,38 +37,43 @@ __Note__: If having trouble getting kinect to work on ubuntu 14.04 follow this [
 
 
 ## Workstation ##
-&nbsp;&nbsp;&nbsp;To perform the environment setup of the workstation
+&nbsp;&nbsp;&nbsp;To perform the environment setup of the workstation (for each terminal)
  - Run `source env.sh` from the project directory
  - Run `source network_master.sh <turtlebot ip>` from the project directory with the turtlbots ip address passed in
 
 ## Turtlebot ##
-&nbsp;&nbsp;&nbsp;To perform the environment setup of the turtlebot
+&nbsp;&nbsp;&nbsp;To perform the environment setup of the turtlebot (for each terminal)
  - Run `source env.sh` from the project directory
  - Run `source network_kobuki.sh` from the project directory
 
 
 ---------------
 # Compilation #
-&nbsp;&nbsp;The program will be compiled when the commmand `source env.sh`
+&nbsp;&nbsp;The program will be compiled when the commmand `source env.sh` is executed.
 
 ---------------
 # Execution #
 
 ## Turtlebot Bringup ##
+&nbsp;&nbsp;This section describes how to bringup the turtlebot for the different tasks. 
+
 ### Creating SLAM map ###
 &nbsp;&nbsp;&nbsp; This section describes how to execute the project on the turlebot. Please follow these steps in order and open 3 terminals using the env setup above:
 - In terminal 1 `./kobuki_bringup.sh` to prep the turtlebot for remote telleoperation for movement controll
 - In terminal 2 run `./gmapping_bringup.sh` add `-s` if you want the rviz terminal.
-- When finished mapping (___Do not stop any of the prgrams___) in the third terminal run the command `rosrun map_server map_saver -f /tmp/my_map` to save the slam map once this is done the programs can be terminated
+- When finished mapping (___!!Do not stop any of the prgrams!!___) in the third terminal run the command `rosrun map_server map_saver -f <path>/<file_name>` to save the slam map. Once this is done the programs can be terminated
 
 ### Running Autonomously ###
-Follow this [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autonomously%20navigate%20in%20a%20known%20map)
- - Must have both `<file_name>.pgm` and `<file_name>.yaml` in tmp folder.
- - in one terminal run `./autonomus_navigation.sh /tmp/<file_name>.yaml`
- - in the second terminal run `roslaunch turtlebot_rviz_launchers view_navigation.launch --screen`
+&nbsp;&nbsp;&nbsp;The autonomus running scripts of our robot is based on this [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autonomously%20navigate%20in%20a%20known%20map). If you are having difficulty getting our scripts below to work follow the tutorial. (remember to follow the tertlebot section environment section for each terminal)
+ - Must have both `<file_name>.pgm` and `<file_name>.yaml` in `/tmp` folder.
+ - In the first terminal run `./autonomus_navigation.sh /tmp/<file_name>.yaml`
+ - In the second terminal run `roslaunch turtlebot_rviz_launchers view_navigation.launch --screen`
+ - Once rviz is running click on interact and while holding the right mouse button zoom out
+ -- Then click 2d pose estimite and click and hold where the robot is approximently and drag the arrow in the direction that the robot is facing then release
+ -- Once the black dot and the green arrow cloud is where the robot is then click on 2d nav point. Then click and hold where you want the robot to go and drag the green arrow in the direction you want the robot to be facing when finished and then release the mouse and the robot will start moving. (_note_: it will not run into walls but if it does it will stop). 
 
 ## Workstation ##
-&nbsp;&nbsp;&nbsp; This section describes how to execute the on the work station after the above [turtlebot bringup](#turtlebot_bringup) and environment setup has been completed: run `rosrun core keyop_controller_publisher` this will allow you to remote control the turtle bot.
+&nbsp;&nbsp;&nbsp; This section describes how to execute the on the work station after the above [turtlebot bringup](#turtlebot_bringup) and environment setup has been completed: run `rosrun core keyop_controller_publisher` this will allow you to remote control the turtle bot. If you want to control the turtlebot from the turtlebot computer just simply run the command from a sourced terminal.
 
 # Results #
 
@@ -80,6 +85,7 @@ Follow this [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autono
 - ROS Indigo turtlebot instilation [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation)
 - Ros gmapping recoding [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Build%20a%20map%20with%20SLAM)
 - Ros autonomus navigation [tutorial](http://wiki.ros.org/turtlebot_navigation/Tutorials/Autonomously%20navigate%20in%20a%20known%20map)
+- For trouble with kinect drivers look at this [post](https://github.com/OpenPTrack/open_ptrack/issues/19)
 
 
 # Appendix #
