@@ -63,7 +63,7 @@ function usage {
 #--------------------------------------------------------------------
 # Execution phase
 
-if [[ $# >= 1 ]]; then
+if [[ $# > 0 ]]; then
 	if [[ $1 -eq "-h" ]]; then
 		usage
 	elif [[ $# > 1 || $1 -ne "-s" ]]; then
@@ -83,7 +83,7 @@ pid_rviz=-1
 
 if [[ $# == 1 ]]; then
 	if [[ $1 -eq "-s" ]]; then
-		echo "Bringingup keyop .... "
+		echo "Bringingup gmapping .... "
 		keyopbringup "${rviz_cmd}" & pid_rviz=$!
 	else
 		echo "Invalid option"
