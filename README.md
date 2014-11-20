@@ -29,10 +29,10 @@ __Authors__: Chris Card, Marshall Sweatt
  - The hector slam  program `sudo apt-get install ros-indigo-slam-gmapping`
  
 __Note__: If having trouble getting kinect to work on ubuntu 14.04 follow this [post](https://github.com/OpenPTrack/open_ptrack/issues/19) specifically the post:
-> I've just found the issue: the latest Ubuntu driver is not working.
-> I solved it by downloading older versions of the drivers ([libopenni-sensor-primesense-dev](https://launchpad.net/%7Ev-launchpad-jochen-sprickerhof-de/+archive/ubuntu/pcl/+build/5252450/+files/libopenni-sensor-primesense-dev_5.1.0.41-3%2Btrusty1_amd64.deb) and [libopenni-sensor-primesense0](https://launchpad.net/%7Ev-launchpad-jochen-sprickerhof-de/+archive/ubuntu/pcl/+build/5252450/+files/libopenni-sensor-primesense0_5.1.0.41-3%2Btrusty1_amd64.deb)) and installing them manually:
-> ```cd ~/Downloads
-sudo dpkg -i libopenni-sensor-primesense*```
+> I've just found the issue: the latest Ubuntu driver is not working.<br>
+> I solved it by downloading older versions of the drivers ([libopenni-sensor-primesense-dev](https://launchpad.net/%7Ev-launchpad-jochen-sprickerhof-de/+archive/ubuntu/pcl/+build/5252450/+files/libopenni-sensor-primesense-dev_5.1.0.41-3%2Btrusty1_amd64.deb) and [libopenni-sensor-primesense0](https://launchpad.net/%7Ev-launchpad-jochen-sprickerhof-de/+archive/ubuntu/pcl/+build/5252450/+files/libopenni-sensor-primesense0_5.1.0.41-3%2Btrusty1_amd64.deb)) and installing them manually:<br>
+> `cd ~/Downloads` <br>
+> `sudo dpkg -i libopenni-sensor-primesense*`
 >Hope it works also for you!
 
 
