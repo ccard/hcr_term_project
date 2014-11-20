@@ -8,21 +8,21 @@
 # Global variables
 roscmd="roslaunch"
 
-turtlebot="core generateOdomAndSlam.launch"
+odomscan="core generateOdomAndSlam.launch"
 keyop="kobuki_keyop keyop.launch"
 
 logdir="logs"
 
-turtlebot_std="${logdir}/turtlebot_std.log"
-turtlebot_err="${logdir}/turtlebot_err.log"
+odomscan_std="${logdir}/odomscan_std.log"
+odomacan_err="${logdir}/odomacan_err.log"
 
-kobuki_std="${logdir}/kobuki_std.log"
-kobuki_err="${logdir}/kobuki_err.log"
+kobuki_std="${logdir}/kobuki_autonomus_std.log"
+kobuki_err="${logdir}/kobuki_autonomus_err.log"
 
-turtlebot_log_options="> ${turtlebot_std} 2> ${turtlebot_err}"
+odomscan_log_options="> ${odomscan_std} 2> ${odomacan_err}"
 kobuki_log_options="> ${kobuki_std} 2> ${kobuki_err}"
 
-turtlebot_cmd="${roscmd} ${turtlebot} ${turtlebot_log_options}"
+turtlebot_cmd="${roscmd} ${odomscan} ${odomscan_log_options}"
 
 kobuki_cmd="${roscmd} ${keyop} ${kobuki_log_options}"
 
@@ -69,10 +69,10 @@ else
 
 map_file=$1
 
-turtlebot_cmd="${roscmd} ${turtlebot} map_file:=${map_file} ${turtlebot_log_options}"
+turtlebot_cmd="${roscmd} ${odomscan} map_file:=${map_file} ${odomscan_log_options}"
 
-echo "For error information please see ${turtlebot_std}, "
-echo "${turtlebot_err}, ${kobuki_std}, and ${kobuki_err}"
+echo "For error information please see ${odomscan_std}, "
+echo "${odomacan_err}, ${kobuki_std}, and ${kobuki_err}"
 
 echo "Bringingup Turtlebot .... "
 turtlebringup "${turtlebot_cmd}" & pid_turtle=$!
