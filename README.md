@@ -83,6 +83,9 @@ __Note__: If having trouble getting kinect to work on ubuntu 14.04 follow this [
 &nbsp;&nbsp;__Demo Video__(If not working click [here](http://www.youtube.com/watch?v=1JjsBqtKpcY&list=UUcS7AZZsCauWAlKDbMXsKOw))
 <iframe width="560" height="315" src="//www.youtube.com/embed/1JjsBqtKpcY?list=UUcS7AZZsCauWAlKDbMXsKOw" frameborder="0" allowfullscreen></iframe>
 
+&nbsp;&nbsp;__Demo Video 2__(if not working click [here](https://www.youtube.com/watch?v=mNctu1of4jQ&feature=youtu.be))
+<iframe width="560" height="315" src="//www.youtube.com/embed/mNctu1of4jQ" frameborder="0" allowfullscreen></iframe>
+
 # References #
 - ROS [Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu)
 - ROS Indigo turtlebot instilation [tutorial](http://wiki.ros.org/turtlebot/Tutorials/indigo/Installation)
